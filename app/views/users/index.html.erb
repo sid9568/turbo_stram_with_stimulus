@@ -1,0 +1,32 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Users</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Number</th>
+       <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr id="user_row">
+      <%@users.each do |u|%>
+      <td><%=u.name%></td>
+      <td><%=u.email%></td>
+      <td><%=u.state%></td>
+      <td><%=u.number%></td>
+      <td>
+        <%= link_to "Edit this user", edit_user_path(u),class: "btn btn-lg btn-primary", data: {controller: "user-modal"}%> |
+          <%= button_to "Destroy this user", u, method: :delete %>
+      </td>
+    </tr>
+    <%end%>
+  </tbody>
+  
+</table>
+
+<%= link_to "New user", new_user_path, data: {controller: "user-modal"} %>
